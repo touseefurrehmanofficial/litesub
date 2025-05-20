@@ -20,12 +20,12 @@ def scrape_data():
     chrome_options.add_argument("--headless")  # Run Chrome in headless mode
     chrome_options.add_argument("--disable-gpu")  # Disable GPU acceleration
 
-    # # Specify the relative path to ChromeDriver
-    # service = Service(ChromeDriverManager().install())
-    driver_path = "/usr/bin/chromedriver"  # Assuming this is where it’s installed
+    # Specify the relative path to ChromeDriver
+    service = Service(ChromeDriverManager().install())
+#     driver_path = "/usr/bin/chromedriver"  # Assuming this is where it’s installed
 
-# Use this path for chromedriver
-    service = Service(driver_path)
+# # Use this path for chromedriver
+#     service = Service(driver_path)
     driver = webdriver.Chrome(service=service, options=chrome_options)
 
     # Open the webpage
