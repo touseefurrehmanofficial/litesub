@@ -1,5 +1,32 @@
-# Use the official Selenium image
-FROM selenium/standalone-chrome:latest
+# Use a Python base image
+FROM python:3.9-slim
+
+# Install dependencies for Chrome to run headlessly
+RUN apt-get update && apt-get install -y \
+    wget \
+    curl \
+    unzip \
+    ca-certificates \
+    libx11-dev \
+    libxcomposite-dev \
+    libxrandr-dev \
+    libxi6 \
+    libgdk-pixbuf2.0-0 \
+    libnss3 \
+    libgconf-2-4 \
+    libfontconfig \
+    libxss1 \
+    libasound2 \
+    libappindicator3-1 \
+    xdg-utils \
+    chromium \
+    chromium-driver \
+    libglib2.0-0 \
+    libx11-xcb1 \
+    libdbus-1-3 \
+    libxtst6 \
+    libpng16-16 \
+    libnss3-dev
 
 # Set the working directory
 WORKDIR /app
