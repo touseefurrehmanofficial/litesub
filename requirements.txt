@@ -1,5 +1,4 @@
 selenium
-webdriver_manager
 flask-restful
 flask
 beautifulsoup4
