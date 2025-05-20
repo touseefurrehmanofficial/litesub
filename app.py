@@ -88,5 +88,9 @@ def index():
     # Render the HTML template with the scraped data
     return render_template('index.html', email=email, password=password, latest_codes=latest_codes)
 
+import os
+
 if __name__ == "__main__":
-    app.run(debug=True, port=3000)
+    port = int(os.environ.get("PORT", 3000))
+    app.run(debug=True, host="0.0.0.0", port=port)
+
