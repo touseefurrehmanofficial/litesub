@@ -1,9 +1,23 @@
 ARG PORT=443
-FROM cypress/browser:latest
-RUN apt-get install python 3 -y
-RUN echo $(python3 -m site --user-base)
+FROM python:3.9-slim  # Use a more Python-friendly base image
+
+# Install necessary system dependencies
+RUN apt-get update && apt-get install -y python3-pip
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the requirements.txt into the container
 COPY requirements.txt .
-ENV PATH /home/root/.local/bin:@{PATH}
-RUN apt-get update && apt-get install -y python3-pip && pip install -r requirements.txt
-COPY ..
-CMD python app.py main:app --host 0.0.0.0 --port $PORT
+
+# Install Python dependencies
+RUN pip install -r requirements.txt
+
+# Copy the rest of the application files
+COPY . .
+
+# Expose the application on the port specified
+EXPOSE $PORT
+
+# Command to start the app
+CMD ["python", "app.py"]
