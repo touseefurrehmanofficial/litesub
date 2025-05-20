@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scraped Data</title>
+</head>
+<body>
+    <h1>Scraped Data from Oxaam Subscription</h1>
+
+    <h2>Subscription Credentials</h2>
+    <p><strong>Email:</strong> {{ email }}</p>
+    <p><strong>Password:</strong> {{ password }}</p>
+
+    <h2>Latest Authentication Codes</h2>
+    {% if latest_codes %}
+        {% for code_info in latest_codes %}
+            <p><strong>Code:</strong> {{ code_info['code'] }}</p>
+            <p><strong>Date & Time:</strong> {{ code_info['date_time'] }}</p>
+            <hr>
+        {% endfor %}
+    {% else %}
+        <p>No authentication codes found.</p>
+    {% endif %}
+</body>
+</html>
