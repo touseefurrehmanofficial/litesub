@@ -1,8 +1,25 @@
-ARG PORT=443
-FROM python:3.9-slim  # Use a more Python-friendly base image
+# Use a Python base image
+FROM python:3.9-slim
 
-# Install necessary system dependencies
-RUN apt-get update && apt-get install -y python3-pip
+# Install dependencies for Chrome to run headlessly
+RUN apt-get update && apt-get install -y \
+    wget \
+    curl \
+    unzip \
+    ca-certificates \
+    libx11-dev \
+    libxcomposite-dev \
+    libxrandr-dev \
+    libxi6 \
+    libgdk-pixbuf2.0-0 \
+    libnss3 \
+    libgconf-2-4 \
+    libfontconfig \
+    libxss1 \
+    libasound2 \
+    libappindicator3-1 \
+    xdg-utils \
+    chromium-driver
 
 # Set the working directory
 WORKDIR /app
