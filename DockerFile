@@ -1,3 +1,4 @@
+# Use the official Selenium image
 FROM selenium/standalone-chrome:latest
 
 # Set the working directory
